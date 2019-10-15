@@ -1,0 +1,39 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+    <hr>
+    <a href="/">Go Back</a>
+        {% if skills %}
+            <table id="skills" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Skill Name</th>
+                    <th>Skill Level</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for skill in skills %}
+                    <tr>
+                        <td>{{ skill.name }}</td>
+                        <td>{{ skill.level }}</td>
+                        <td>
+                            <a href="/skill/edit/{{ skill.id }}" class="btn btn-success">Update</a>
+                            <a href="#" class="btn btn-danger delete-article" data-id="{{ skill.id }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No skills to display</p>
+        {% endif %}
+    {% block javascripts %}
+        <script src="/js/main.js"></script>
+    {% endblock %}
+{% endblock %}
+
+
+
+
+

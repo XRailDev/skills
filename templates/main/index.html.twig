@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of employees{% endblock %}
+
+{% block body %}
+    {% if persons %}
+        <table id="persons" class="table table-striped">
+            <thead>
+            <tr>
+                <th>First name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for person in persons %}
+                <tr>
+                    <td>{{ person.name }}</td>
+                    <td>
+                        <a href="/person/{{ person.id }}" class="btn btn-outline-info">Show</a>
+                        <a href="/skill/new/{{ person.id }}" class="btn btn-outline-success">Add skill</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No persons to display</p>
+    {% endif %}
+{% endblock %}
